@@ -1,0 +1,7 @@
+data = float(input("Введите число: "))
+data_int = int(data)
+left, right = divmod(data_int, 10000)
+res1, res2 = divmod(right, 1000)
+res3, res4 = divmod(res2, 100)
+res5, res6 = divmod(res4, 10)
+print(res6 * 10000 + res5 * 1000 + res3 * 100 + res1 * 10 + left *1)
