@@ -11,3 +11,15 @@ if len(my_list) > 1:
     print(my_list)
 else:
     print(my_list)
+'''
+print("####" * 10)
+
+#other
+if len(my_list) > 1:
+    get_el = my_list[-1]
+    my_list.insert(0, get_el)
+    my_list.remove(get_el)
+    print(my_list)
+else:
+    print(my_list)
+'''
