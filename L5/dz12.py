@@ -3,7 +3,7 @@ data = str(input("Type string: "))
 res_list = []
 for symbol in string.punctuation:
     if symbol in data:
-        data = data.replace(symbol, " ")
+        data = data.replace(symbol, "")
 
 data = data.split()
 for word in data:
