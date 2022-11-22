@@ -1,5 +1,4 @@
 import string
-#Python Community
 data = str(input("Type string: "))
 res_list = []
 for symbol in string.punctuation:
@@ -16,5 +15,3 @@ if len(result) > 140:
     print("#{}".format(new_result))
 else:
     print("#{}".format(result))
-
-
