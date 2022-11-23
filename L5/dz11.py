@@ -24,7 +24,7 @@ while True:
     else:
         print("Ничего не выбрано")
 
-    next_operation = str(input("Хотите продолжить?: "))
+    next_operation = input("Хотите продолжить?: ").lower()
 
     if next_operation != 'y':
         break
