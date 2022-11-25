@@ -11,28 +11,35 @@ if data:
             del_symbol = s
         symbol.extend(del_symbol)
 
-    w = []
-    for word in data:
-        w.extend(word)
+    word = []
+    upper_word = []
+    lower_word = []
+    check_symbol = False
 
-    #не может начинаться с цифры
-    #не может состоять только из цифр
-    #не может содержать заглавные буквы
-    #не может содержать знаки пунктуации
-    #не может содержать зарегистрированные слова keyword.kwlist
-    for char in w:
-        if data[:1].isdigit():
-            print(False)
-        elif data.isdigit():
-            print(False)
-        elif char.isalpha() and char.isupper():
-            print(False)
-        elif char in symbol:
-            print(False)
-        elif w in keyword.kwlist:
-            print(False)
+    for w in data:
+        word.extend(w)
+        if w.isupper():
+            upper_word.extend(w)
         else:
-            print(True)
+            lower_word.extend(w)
 
+        if w in symbol:
+            check_symbol = True
+
+    upper_word = "".join(upper_word)
+    lower_word = "".join(lower_word)
+
+    if data[:1].isdigit():
+        print(False)
+    elif data.isnumeric():
+        print(False)
+    elif upper_word.isupper():
+        print(False)
+    elif check_symbol:
+        print(False)
+    elif lower_word in keyword.kwlist:
+        print(False)
+    else:
+        print(True)
 else:
     print("Введите переменную для проверки")
