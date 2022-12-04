@@ -17,3 +17,10 @@
 Дополнить ведущими нулями можно с помощью метода zfill(2)
 '''
 
+data = float(input("Ввод: "))
+data = int(data)
+if data > 0 and data < 8639999:
+    left, right = divmod(data, 60)
+    print(left, right)
+else:
+    print("-")
