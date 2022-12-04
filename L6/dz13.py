@@ -11,6 +11,6 @@ e = letters.find(end)
 
 res = letters[s:e+1]
 if not res:
-    res = letters[e:s + 1]
+    res = letters[e:s+1]
 print(res)
 
