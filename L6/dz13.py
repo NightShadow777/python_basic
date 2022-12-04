@@ -8,16 +8,18 @@
 "a-a" -> a
 "s-H" -> stuvwxyzABCDEFGH
 "a-A" -> abcdefghijklmnopqrstuvwxyzA
-
 '''
 
 import string
-print(string.ascii_letters)
 data = input("Ввод: ")
-start_letter = data[0]
-end_letter = data[2]
+clean_data = data.replace("-", "")
+start_letter = min(clean_data)
+end_letter = max(clean_data)
 letters = string.ascii_letters
 s = letters.find(start_letter)
 e = letters.find(end_letter)
-res = letters[s+1:e]
-print("{0}{1}{2}".format(start_letter, res, end_letter))
+res = letters[s:e+1]
+if not res:
+    res = letters[e:s + 1]
+print(res)
+
