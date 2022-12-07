@@ -1,11 +1,10 @@
 def correct_sentence(param):
     if param:
-        get_first_letter = param[:1]
         word_list = []
         i = 0
         for w in param:
-            if i == 0:
-                w = w.replace(get_first_letter, w.upper())
+            if i == 0 and w.islower():
+                w = w.title()
                 word_list.extend(w)
             else:
                 word_list.extend(w)
