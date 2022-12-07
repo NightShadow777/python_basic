@@ -2,7 +2,7 @@ def second_index(istring, wanted_symbol):
     if istring and wanted_symbol:
         result = None
         for i, s in enumerate(istring):
-            if i > 0 and wanted_symbol in s:
+            if i > 0 and wanted_symbol == s:
                 result = i
     else:
         result = "Error!"
