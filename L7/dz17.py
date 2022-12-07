@@ -1,22 +1,9 @@
 def correct_sentence(param):
     if param:
-        result = ""
-        word_list = []
-        i = 0
-        for w in param:
-            if i == 0 and w.islower():
-                w = w.title()
-                word_list.extend(w)
-            else:
-                word_list.extend(w)
-            i += 1
-        join_list = "".join(word_list)
-
-        if "." in join_list:
-            result = join_list
-        else:
-            result = join_list + "."
-        return result
+        join_list = param[0].title() + param[1:]
+        if not "." in join_list[-1]:
+            join_list = join_list + "."
+        return join_list
     else:
         return "Введите строку!!!"
 
