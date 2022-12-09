@@ -6,5 +6,6 @@ def find_unique_value(param):
                 result = p
         return result
 
-i_data = input("Input num: ").split()
-print(find_unique_value(i_data))
+print(find_unique_value([1, 2, 1, 1]))
+print(find_unique_value([2, 3, 3, 3]))
+print(find_unique_value([5, 5, 5, 0.5]))
