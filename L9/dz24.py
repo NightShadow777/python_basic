@@ -9,7 +9,10 @@ def difference(*args):
             if element > max_element:
                 max_element = element
         result = max_element - min_element
-        return result
+        if isinstance( result, float):
+            return round(result, 2)
+        else:
+            return result
     else:
         result = 0
         return result
