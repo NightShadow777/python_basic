@@ -5,4 +5,5 @@ def prime_generator(int_param):
                 break
         else:
             yield i
+    return
 print(list(prime_generator(10)))
