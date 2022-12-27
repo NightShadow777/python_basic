@@ -13,4 +13,5 @@ def delete_html_tags(html_file, result_file='cleaned.txt'):
 
     with open(result_file, "w", encoding="utf-8") as res_file:
         res_file.write("".join(result))
+
 delete_html_tags(html_file="draft.html")
