@@ -5,7 +5,6 @@ def delete_html_tags(html_file, result_file='cleaned.txt'):
         doc = html.read()
         res = re.sub(r'\<[^>]*\>', '', doc)
         res = re.sub(r' {2,100}', '', res)
-        print(res.split("\n"))
         s = res.split("\n")
         result = []
         for q in s:
