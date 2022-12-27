@@ -15,7 +15,6 @@
 '''
 
 class Item:
-
     def __init__(self, name, price, decription, demensions):
         self.price = price
         self.decription = decription
@@ -23,7 +22,7 @@ class Item:
         self.name = name
 
     def __str__(self):
-        pass
+        return f"name = {self.name}, desc = {self.decription}, demensions = {self.demensions}, price = {self.price}"
 
 
 class User:
