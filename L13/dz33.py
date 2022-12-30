@@ -6,7 +6,8 @@
 3) Создайте класс Группа, экземпляр которого, состоит из объектов класса Студент. Реализуйте методы добавления,
 удаления студента и метод поиска студента по фамилии.
 
-Метод поиска студента должен возвращать именно экземпляр класса Студент, если студент есть в группе, в противном случае - None.
+Метод поиска студента должен возвращать именно экземпляр класса Студент, если студент есть в группе,
+ в противном случае - None.
 
 Определите для Группы метод __str__() для возвращения списка студентов в виде строки.
 
@@ -46,9 +47,14 @@ class Group:
 
     def __str__(self):
         all_students = ''
-        for st in self.group:
-            print(st)
-        return f'Number:{self.number}\n {all_students} '
+        for i, st in enumerate(self.group):
+            all_students += "{0}) First name: {1} \n" \
+                            "   Last name: {2}\n" \
+                            "   Gender: {3}\n" \
+                            "   Age: {4}\n" \
+                            "   Record book:{5}\n" \
+                            "".format(i+1, st.first_name, st.last_name, st.gender, st.age, st.record_book)
+        return f'Number:{self.number}\n{all_students} '
 
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
