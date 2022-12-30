@@ -72,5 +72,5 @@ cart2 = Purchase(buyer2)
 cart2.add_item(blackberry, 4)
 print(str(cart2) + "####"*6)
 print("Total: ", end=" ")
-print(cart2.get_total()) # 60
+print(cart2.get_total()) # 80
 print("####"*6)
