@@ -1,19 +1,3 @@
-'''
-1) Создайте класс, описывающий человека (создайте метод, выводящий информацию о человеке).
-
-2) На его основе создайте класс Студент (переопределите метод вывода информации).
-
-3) Создайте класс Группа, экземпляр которого, состоит из объектов класса Студент. Реализуйте методы добавления,
-удаления студента и метод поиска студента по фамилии.
-
-Метод поиска студента должен возвращать именно экземпляр класса Студент, если студент есть в группе,
- в противном случае - None.
-
-Определите для Группы метод __str__() для возвращения списка студентов в виде строки.
-
-Ниже представленны заготовки, которые необходимо дополнить.
-'''
-
 class Human:
     def __init__(self, gender, age, first_name, last_name):
         self.gender = gender
@@ -38,33 +22,49 @@ class Group:
     def add_student(self, student):
         self.group.add(student)
 
+    #ох чет с удалением голову сломал, пришло такое решение. Но наверняка есть более элегантное)
     def delete_student(self, last_name):
         res = self.find_student(last_name)
-        pass
+        for r in res:
+            if last_name in r.last_name:
+                r1 = r.last_name
+        a = {}
+        for g in self.group:
+            a[g.last_name] = g
+        loc_group = a.pop(r1)
+        self.group.remove(loc_group)
+        return self.group
 
     def find_student(self, last_name):
-        pass
+        for stud in self.group:
+            if last_name in stud.last_name:
+                return self.group
 
     def __str__(self):
         all_students = ''
+        delim = " "* 2
         for i, st in enumerate(self.group):
-            all_students += "{0}) First name: {1} \n" \
-                            "   Last name: {2}\n" \
-                            "   Gender: {3}\n" \
-                            "   Age: {4}\n" \
-                            "   Record book:{5}\n" \
-                            "".format(i+1, st.first_name, st.last_name, st.gender, st.age, st.record_book)
+            all_students += "{0}) First name: {1}{6}" \
+                            "Last name: {2}{6}" \
+                            "Gender: {3}{6}" \
+                            "Age: {4}{6}" \
+                            "Record book: {5}\n" \
+                            "".format(i+1, st.first_name, st.last_name, st.gender, st.age, st.record_book, delim)
         return f'Number:{self.number}\n{all_students} '
 
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
 st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
+#st3 = Student('Male', 30, 'Markus', 'Ivar', 'AN141')
 gr = Group('PD1')
 gr.add_student(st1)
 gr.add_student(st2)
+#gr.add_student(st3)
 print(gr)
+
 gr.find_student('Jobs')
 gr.find_student('Jobs2')  # None
 
 gr.delete_student('Taylor')
+#gr.delete_student('Ivar')
 print(gr) # Only one student
