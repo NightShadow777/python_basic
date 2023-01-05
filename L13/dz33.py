@@ -25,7 +25,7 @@ class Group:
     #ох чет с удалением голову сломал, пришло такое решение. Но наверняка есть более элегантное)
     def delete_student(self, last_name):
         res = self.find_student(last_name)
-        self.group.remove(res)
+        self.group.discard(res)
 
     def find_student(self, last_name):
         for stud in self.group:
@@ -47,16 +47,16 @@ class Group:
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
 st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
-#st3 = Student('Male', 30, 'Markus', 'Ivar', 'AN141')
+st3 = Student('Male', 30, 'Markus', 'Ivar', 'AN141')
 gr = Group('PD1')
 gr.add_student(st1)
 gr.add_student(st2)
-#gr.add_student(st3)
+gr.add_student(st3)
 print(gr)
 
 gr.find_student('Jobs')
 gr.find_student('Jobs2')# None
 
 gr.delete_student('Taylor')
-#gr.delete_student('Ivar')
+gr.delete_student('Ivar')
 print(gr) # Only one student
