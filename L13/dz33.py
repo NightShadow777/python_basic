@@ -25,20 +25,12 @@ class Group:
     #ох чет с удалением голову сломал, пришло такое решение. Но наверняка есть более элегантное)
     def delete_student(self, last_name):
         res = self.find_student(last_name)
-        for r in res:
-            if last_name in r.last_name:
-                r1 = r.last_name
-        a = {}
-        for g in self.group:
-            a[g.last_name] = g
-        loc_group = a.pop(r1)
-        self.group.remove(loc_group)
-        return self.group
+        self.group.remove(res)
 
     def find_student(self, last_name):
         for stud in self.group:
-            if last_name in stud.last_name:
-                return self.group
+            if last_name == stud.last_name:
+                return stud
 
     def __str__(self):
         all_students = ''
@@ -63,7 +55,7 @@ gr.add_student(st2)
 print(gr)
 
 gr.find_student('Jobs')
-gr.find_student('Jobs2')  # None
+gr.find_student('Jobs2')# None
 
 gr.delete_student('Taylor')
 #gr.delete_student('Ivar')
