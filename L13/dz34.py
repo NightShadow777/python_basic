@@ -8,20 +8,20 @@ class Counter():
         self.current = start
 
     def set_max(self, max_max):
-        return max_max + 1
+        self.max_value = max_max
 
     def set_min(self, min_min):
-        return min_min - 1
+        self.min_value = min_min
 
     def step_up(self):
-        self.current = self.set_max(self.current)
-        if self.current > self.max_value:
+        if self.current == self.max_value:
             raise ValueError("Достигнут максимум")
+        self.current += 1
 
     def step_down(self):
-        self.current = self.set_min(self.current)
-        if self.min_value < self.current:
+        if self.current == self.min_value:
             raise ValueError("Достигнут минимум")
+        self.current -= 1
 
     def get_current(self):
         return self.current
@@ -32,13 +32,19 @@ counter.step_up()
 counter.step_up()
 counter.step_up()
 print(counter.get_current())  # 10
-
 try:
     counter.step_up()  # ValueError
 except ValueError as e:
     print(e) # Достигнут максимум
-    try:
-        counter.step_down()
-    except ValueError as e:
-        print(e)
 print(counter.get_current())  # 10
+
+counter.set_min(7)
+counter.step_down()
+counter.step_down()
+counter.step_down()
+print(counter.get_current())  # 7
+try:
+    counter.step_down()  # ValueError
+except ValueError as e:
+    print(e) # Достигнут минимум
+print(counter.get_current())  # 7
