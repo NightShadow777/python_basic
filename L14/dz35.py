@@ -1,3 +1,9 @@
+class MCustomException(Exception):
+    def __init__(self, message):
+        super().__init__()
+        self.message = message
+    def get_exception_message(self):
+        return self.message
 class Human:
     def __init__(self, gender, age, first_name, last_name):
         self.gender = gender
@@ -20,18 +26,16 @@ class Group:
         self.number = number
         self.group = set()
     def add_student(self, student):
+        if len(self.group) >= 10:
+            raise MCustomException("You discover more than 10 students")
         self.group.add(student)
-
-    #ох чет с удалением голову сломал, пришло такое решение. Но наверняка есть более элегантное)
     def delete_student(self, last_name):
         res = self.find_student(last_name)
         self.group.discard(res)
-
     def find_student(self, last_name):
         for stud in self.group:
             if last_name == stud.last_name:
                 return stud
-
     def __str__(self):
         all_students = ''
         delim = " "* 2
@@ -44,19 +48,41 @@ class Group:
                             "".format(i+1, st.first_name, st.last_name, st.gender, st.age, st.record_book, delim)
         return f'Number:{self.number}\n{all_students} '
 
-
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
 st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
-st3 = Student('Male', 30, 'Markus', 'Ivar', 'AN141')
+st3 = Student('Male', 30, 'Jon', 'Ivar', 'AN141')
+st4 = Student('Female', 30, 'Eva', 'Test2', 'AN141')
+st5 = Student('Female', 30, 'Alice', 'Test', 'AN141')
+st6 = Student('Female', 30, 'Hellga', 'Test', 'AN141')
+st7 = Student('Male', 30, 'Markus3', 'Ivar3', 'AN141')
+st8 = Student('Male', 30, 'Markus1', 'Ivar1', 'AN141')
+st9 = Student('Male', 30, 'Markus2', 'Ivar2', 'AN141')
+st10 = Student('Male', 30, 'Markus22', 'Ivar3', 'AN141')
+st11 = Student('Male', 30, 'Markus11', 'Ivar11', 'AN141')
+st12 = Student('Male', 30, 'Markus11', 'Ivar11', 'AN141')
+
 gr = Group('PD1')
 gr.add_student(st1)
 gr.add_student(st2)
 gr.add_student(st3)
+gr.add_student(st4)
+gr.add_student(st5)
+gr.add_student(st6)
+gr.add_student(st7)
+gr.add_student(st8)
+gr.add_student(st9)
+gr.add_student(st10)
+try:
+    gr.add_student(st11)
+except MCustomException as err:
+    print( err.get_exception_message() )
+
 print(gr)
 
-gr.find_student('Jobs')
-gr.find_student('Jobs2')# None
+print(gr.find_student('Jobs'))
+print(gr.find_student('Jobs2'))# None
 
 gr.delete_student('Taylor')
-#gr.delete_student('Ivar')
+gr.delete_student('Ivar')
+
 print(gr) # Only one student
