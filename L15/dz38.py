@@ -34,14 +34,9 @@ class Fraction:
             return (self.a * other.b < other.a * self.b)
         return NotImplemented
 
-    def __ge__(self, other):
-        if isinstance(other, Fraction):
-            return any((self > other, self == other))
-        return NotImplemented
-
     def __le__(self, other):
         if isinstance(other, Fraction):
-            return  any((self < other, self == other))
+            return any((self < other, self == other))
         return NotImplemented
 
     def __str__(self):
