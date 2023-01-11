@@ -37,21 +37,21 @@ assert r2.get_square() == 18
 #print(r1)
 #print(r2)
 #print(r1.get_square() == 9)
-#print(r1.get_square() == 8)
+print(r1.get_square() == 8)
 #print(r1.get_square())
-#print(r2.get_square() == 18)
+print(r2.get_square() == 18)
 #print(r2.get_square())
 
 r3 = r1 + r2
 #print(r3)
 assert r3.get_square() == 26
-#print(r3.get_square() == 26)
+print(r3.get_square() == 26)
 #print(r3.get_square())
 
 r4 = r1 * 4
 #print(r4)
 assert r4.get_square() == 32
-#print(r4.get_square() == 32)
+print(r4.get_square() == 32)
 #print(r4.get_square())
 
 r5 = r1 / 4
