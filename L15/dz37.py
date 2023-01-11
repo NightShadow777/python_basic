@@ -37,7 +37,6 @@ class Rectangle:
 
     def __add__(self, other):
         if isinstance(other, Rectangle):
-            #return Rectangle(self.width, (self.get_square() + other.get_square()) / self.width)
             return Rectangle(self.width, (self.get_square() + other.get_square()) / self.width)
         return NotImplemented
 
